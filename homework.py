@@ -38,7 +38,7 @@ class Training:
     def __init__(self,
                  action: int,
                  duration: float,
-                 weight: float,
+                 weight: float
                  ) -> None:
         self.action = action
         self.duration = duration
@@ -74,6 +74,13 @@ class Running(Training):
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
+        #  duration_minute = self.duration * self.MIN_IN_H
+        #  - если ввожу такую переменную,
+        #  pytest ругается, что вычисляется не то значение:
+        #
+        #  AssertionError: Проверьте формулу расчёта потраченных калорий
+        #  в классе `Running`
+        #  assert 12.812471999999998 == 12.812472
         return ((self.CALORIES_MEAN_SPEED_MULTIPLIER * self.get_mean_speed()
                 + self.CALORIES_MEAN_SPEED_SHIFT)
                 * self.weight / self.M_IN_KM * self.duration * self.MIN_IN_H)
@@ -119,7 +126,7 @@ class Swimming(Training):
                  duration: float,
                  weight: float,
                  length_pool: float,
-                 count_pool: float,
+                 count_pool: float
                  ) -> None:
         super().__init__(action, duration, weight)
         self.length_pool = length_pool
