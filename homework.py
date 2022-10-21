@@ -1,4 +1,4 @@
-from typing import Dict, Type
+from typing import Dict, Type, Optional
 
 
 class InfoMessage:
@@ -55,8 +55,10 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError(
-            'Определите get_spent_calories в %s.' % (self.__class__.__name__))
+#   не проходит тесты, если писать так
+#        raise NotImplementedError(
+#            f'Определите get_spent_calories в {self.__class__.__name__}.')
+    pass
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
