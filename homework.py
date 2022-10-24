@@ -1,4 +1,4 @@
-from typing import Dict, Type
+from typing import Dict, Type, List, Union
 
 
 class InfoMessage:
@@ -75,13 +75,6 @@ class Running(Training):
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        #  duration_minute = self.duration * self.MIN_IN_H
-        #  - если ввожу такую переменную,
-        #  pytest ругается, что вычисляется не то значение:
-        #
-        #  AssertionError: Проверьте формулу расчёта потраченных калорий
-        #  в классе `Running`
-        #  assert 12.812471999999998 == 12.812472
         return ((self.CALORIES_MEAN_SPEED_MULTIPLIER * self.get_mean_speed()
                 + self.CALORIES_MEAN_SPEED_SHIFT)
                 * self.weight / self.M_IN_KM * self.duration * self.MIN_IN_H)
@@ -142,7 +135,7 @@ class Swimming(Training):
 
 
 def read_package(workout_type: str,
-                 data: list
+                 data: List[Union[str, int]]
                  ) -> Training:
     """Прочитать данные полученные от датчиков."""
     datas: Dict[str, Type[Training]] = {
