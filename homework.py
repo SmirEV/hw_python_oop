@@ -1,4 +1,7 @@
-from typing import Dict, Type, List, Union
+from typing import Dict
+from typing import List
+from typing import Tuple
+from typing import Type
 
 
 class InfoMessage:
@@ -135,7 +138,7 @@ class Swimming(Training):
 
 
 def read_package(workout_type: str,
-                 data: List[Union[str, int]]
+                 data: List[Tuple[str, int]]
                  ) -> Training:
     """Прочитать данные полученные от датчиков."""
     datas: Dict[str, Type[Training]] = {
